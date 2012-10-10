@@ -1,0 +1,14 @@
+#House{width:500px;height:500px;padding:5px 5px 0 0;background:#ccc;clear:both;}
+#Toolbar{width:500px;padding:5px;margin:5px 0;}
+#Toolbar .block{float:left;padding:3px;background:#aaa;margin-right:5px;cursor:move;}
+.noselect{-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
+.box{width:245px;height:245px;background:#000; float:left;margin:0 0 5px 5px;}
+
+.boxSample{background:#f00;cursor:move;-webkit-touch-callout: none;}
+.boxTall{height:150px;width:75px;}
+.boxWide{height:75px;width:150px;}
+.boxSingle{height:75px;width:75px;}
+
+.c{clear:both;}
+
+​
