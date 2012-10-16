@@ -6,8 +6,7 @@ House = {
 	targetCoordinates:[0,0],
 	targetImageBlocks:[ ["n","n"], ["n","n"] ], // n, s, v, h
 	targetImage:"",
-	mouseX:-1,
-	mouseY:-1,
+
 	setupActions: function(){
 		// Track the block we might potentially request
 		$("#Toolbar .block").hover(function(){
@@ -28,6 +27,7 @@ House = {
 
 
 			if(!House.blockTarget) return false;
+			if( House.isCombined() ) House.resetProcess();
 
 			House.activeBlock = House.blockTarget;
 			/*
@@ -109,19 +109,16 @@ House = {
 					for(var i=0;i< affectedTargets.length;i++){
 						// Handle conflicts in placements here.
 						House.setPlaceholder(House.placeTarget, "s");
-						$("#"+House.placeTarget).css('background','#f00');
 					}
 					break;
 				case "blockTall":
 					for(var i=0;i< affectedTargets.length;i++){
 						House.setPlaceholder(affectedTargets[i], "v");
-						$("#"+affectedTargets[i]).css('background','#00f');
 					}
 					break;
 				case "blockWide":
 					for(var i=0;i< affectedTargets.length;i++){
 						House.setPlaceholder(affectedTargets[i], "h");
-						$("#"+affectedTargets[i]).css('background','#0f0');
 					}
 					break;
 				case "blockDelete":
@@ -146,19 +143,25 @@ House = {
 			//console.log("( e.clientX, e.clientY ) : " + clientCoords);
 		});
 		$("#blocksActions").click(function(e){
-			if($(this).hasClass("modeCombine")){
-				House.combine();
-			}else{
+			if(House.isCombined()){
 				House.resetProcess();
+			}else{
+				House.combine();
 			}
 		});
+	},
+	isCombined:function(){
+		if($("#blocksActions").hasClass("modeCombine")){
+			return false;
+		}
+		return true;
 	},
 	init: function(){
 		$(document).ready(function(){
 			House.setupActions();
 		});
 	},
-	affectedBlocks: function(overx,overy, sizex,sizey){
+	affectedBlocks: function(overx, overy, sizex, sizey){
 		switch(overx){
 			case 1:
 				switch(overy){
@@ -210,38 +213,21 @@ House = {
 	}, 
 	setPlaceholder: function(placeholder,type){
 		var target = House.lookupPlaceholder(placeholder);
-		//console.log( target.join("-") );
+		if (type == "s") $("#"+placeholder).css('background','#f00');
+		if (type == "v") $("#"+placeholder).css('background','#00f');
+		if (type == "h") $("#"+placeholder).css('background','#0f0');
+
 		House.targetImageBlocks[target[0]-1 ][target[1]-1 ] = type;
 	},
 	resetPlaceholders: function(){
-
 		House.targetImageBlocks = [ ["n","n"], ["n","n"] ]
 	},
 	lookupBlocks: function(x,y){
 		var place = false;
-		switch(x){
-			case 1:
-				switch(y){
-					case 1:
-						place = "placeHolder1";
-						break;
-					case 2:
-						place = "placeHolder3";
-						break;
-				}
-				break;
-			case 2:
-				switch(y){
-					case 1:
-						place = "placeHolder2";
-						break;
-					case 2:
-						place = "placeHolder4";
-						break;
-				}
-				break;
-		}
-		//console.log(x+","+y+": "+place);
+		if( x == 1 && y == 1) place = "placeHolder1";
+		if( x == 1 && y == 2) place = "placeHolder3";
+		if( x == 2 && y == 1) place = "placeHolder2";
+		if( x == 2 && y == 2) place = "placeHolder4";
 		return place;
 	},
 	lookupPlaceholder: function(name){
@@ -261,12 +247,38 @@ House = {
 		var image = "panels/"+combined+".png";
 		$("#Present").html("<img src='"+image+"' width='500' height='500'>").show("fast");
 		$("#blocksActions").html("Reset").removeClass("modeCombine").addClass("modeReset");
-
+		if(House.getCookie("check_"+combined)){
+			House.setCookie("check_"+combined,"");
+		}
 		//console.log( combined );
 	},
 	resetProcess:function(){
 		$("#Present").hide("fast").html("");
 		$("#blocksActions").html("Combine").addClass("modeCombine").removeClass("modeReset");
+		$(".box").css('background','transparent');
+		House.resetPlaceholders();
 	},
+	squareOffConflicts: function(){
+
+	},
+	setCookie: function(c_name,value,exdays){
+		exdays = 365;
+		var exdate=new Date();
+		exdate.setDate(exdate.getDate() + exdays);
+		var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+		document.cookie=c_name + "=" + c_value;
+	},
+	getCookie: function(c_name){
+		var i,x,y,ARRcookies=document.cookie.split(";");
+		for (i=0;i<ARRcookies.length;i++){
+			x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+			y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+			x=x.replace(/^\s+|\s+$/g,"");
+			if (x==c_name){
+				return unescape(y);
+			}
+		}
+	},
+
 };
 House.init();
