@@ -245,7 +245,10 @@ House = {
 	combine:function(){
 		var combined = [ House.targetImageBlocks[0][0], House.targetImageBlocks[1][0], House.targetImageBlocks[0][1], House.targetImageBlocks[1][1] ].join("");
 		var image = "panels/"+combined+".png";
-		$("#Present").html("<img src='"+image+"' width='500' height='500'>").show("fast");
+		$("#Present").html("<img src='"+image+"' width='500' height='500'>");
+		$('#Present img').load(function() { 
+			$("#Present").show("fast");
+		});
 		$("#blocksActions").html("Reset").removeClass("modeCombine").addClass("modeReset");
 		if(House.getCookie("check_"+combined)){
 			House.setCookie("check_"+combined,"");
