@@ -1,6 +1,6 @@
 body{background:#07110a;font-family: 'Finger Paint', cursive;}
 #Wrapper{}
-#Container{width:1000px;}
+#Container{width:820px;}
 #Workshop{padding:10px;float:left;}
 #House{width:536px;height:500px;padding:0 0 0 10px;clear:both;}
 #Roof{height:121px;background:url("../img/roof.png") top no-repeat;}
@@ -10,6 +10,7 @@ body{background:#07110a;font-family: 'Finger Paint', cursive;}
 #Present{width:500px;height:500px;position:absolute;background:#fff;display:none;}
 #NotPresent{width:500px;height:260px;color:#fff;position:absolute;background:#000;display:none;padding:240px 0 0 0;}
 
+#ToolbarWrapper{width:250px;float:left;}
 #Toolbar{width:300px;padding:5px;margin:115px 0 0 0;position: relative;}
 #Toolbar .block{float:left;padding:3px;background:#707070;margin-right:5px;cursor:move;}
 
