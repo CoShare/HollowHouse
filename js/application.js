@@ -6,6 +6,7 @@ House = {
 	targetCoordinates:[0,0],
 	targetImageBlocks:[ ["n","n"], ["n","n"] ], // n, s, v, h
 	targetImage:"",
+
 	images:{
 		"nnnn":{active:true},
 		"nnns":{active:true},
@@ -288,18 +289,29 @@ House = {
 	combine:function(){
 		var combined = [ House.targetImageBlocks[0][0], House.targetImageBlocks[1][0], House.targetImageBlocks[0][1], House.targetImageBlocks[1][1] ].join("");
 		var image = "panels/"+combined+".png";
+
+		$("#blocksActions").html("Reset").removeClass("modeCombine").addClass("modeReset");
+
+		if( House.images[combined] && House.images[combined].active ){}else{
+			$("#NotPresent").show("fast");
+			return false;
+		}
+
 		$("#Present").html("<img src='"+image+"' width='500' height='500'>");
 		$('#Present img').load(function() { 
 			$("#Present").show("fast");
 		});
-		$("#blocksActions").html("Reset").removeClass("modeCombine").addClass("modeReset");
+		
+		/*
 		if(House.getCookie("check_"+combined)){
 			House.setCookie("check_"+combined,"");
 		}
+		*/
 		//console.log( combined );
 	},
 	resetProcess:function(){
 		$("#Present").hide("fast").html("");
+		$("#NotPresent").hide("fast");
 		$("#blocksActions").html("Combine").addClass("modeCombine").removeClass("modeReset");
 		$(".box").css('background','transparent');
 		House.resetPlaceholders();
