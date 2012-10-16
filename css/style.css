@@ -7,6 +7,8 @@ body{background:#07110a;font-family: 'Finger Paint', cursive;}
 #Siding{border:2px solid #fefcf1;padding:13px;}
 #Frame{border:3px solid #fefcf1;background:url("../img/bg.png") top center no-repeat}
 
+#Present{width:500px;height:500px;position:absolute;background:#fff;display:none;}
+
 #Toolbar{width:300px;padding:5px;margin:150px 0 0 0;position: relative;}
 #Toolbar .block{float:left;padding:3px;background:#707070;margin-right:5px;cursor:move;}
 

@@ -107,25 +107,26 @@ House = {
 			switch(House.activeBlock){
 				case "blockSingle":
 					for(var i=0;i< affectedTargets.length;i++){
+						// Handle conflicts in placements here.
 						House.setPlaceholder(House.placeTarget, "s");
 						$("#"+House.placeTarget).css('background','#f00');
 					}
 					break;
 				case "blockTall":
 					for(var i=0;i< affectedTargets.length;i++){
-						House.setPlaceholder(House.placeTarget, "v");
+						House.setPlaceholder(affectedTargets[i], "v");
 						$("#"+affectedTargets[i]).css('background','#00f');
 					}
 					break;
 				case "blockWide":
 					for(var i=0;i< affectedTargets.length;i++){
-						House.setPlaceholder(House.placeTarget, "h");
+						House.setPlaceholder(affectedTargets[i], "h");
 						$("#"+affectedTargets[i]).css('background','#0f0');
 					}
 					break;
 				case "blockDelete":
 					for(var i=0;i< affectedTargets.length;i++){
-						House.setPlaceholder(House.placeTarget, "n");
+						House.setPlaceholder(affectedTargets[i], "n");
 						$("#"+affectedTargets[i]).css('background','#000');
 					}
 					break;
@@ -145,7 +146,11 @@ House = {
 			//console.log("( e.clientX, e.clientY ) : " + clientCoords);
 		});
 		$("#blocksActions").click(function(e){
-			House.combine();
+			if($(this).hasClass("modeCombine")){
+				House.combine();
+			}else{
+				House.resetProcess();
+			}
 		});
 	},
 	init: function(){
@@ -205,10 +210,11 @@ House = {
 	}, 
 	setPlaceholder: function(placeholder,type){
 		var target = House.lookupPlaceholder(placeholder);
-		console.log(target.join("-"));
+		//console.log( target.join("-") );
 		House.targetImageBlocks[target[0]-1 ][target[1]-1 ] = type;
 	},
 	resetPlaceholders: function(){
+
 		House.targetImageBlocks = [ ["n","n"], ["n","n"] ]
 	},
 	lookupBlocks: function(x,y){
@@ -251,7 +257,16 @@ House = {
 		}
 	},
 	combine:function(){
-		console.log( House.targetImageBlocks.join(",") );
+		var combined = [ House.targetImageBlocks[0][0], House.targetImageBlocks[1][0], House.targetImageBlocks[0][1], House.targetImageBlocks[1][1] ].join("");
+		var image = "panels/"+combined+".png";
+		$("#Present").html("<img src='"+image+"' width='500' height='500'>").show("fast");
+		$("#blocksActions").html("Reset").removeClass("modeCombine").addClass("modeReset");
+
+		//console.log( combined );
+	},
+	resetProcess:function(){
+		$("#Present").hide("fast").html("");
+		$("#blocksActions").html("Combine").addClass("modeCombine").removeClass("modeReset");
 	},
 };
 House.init();
