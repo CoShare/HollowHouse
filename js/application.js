@@ -110,11 +110,6 @@ House = {
 			}
 			e.preventDefault();
 		}).mouseup(function(){
-			/* Visual
-			$("#PlaceMe").remove();
-			*/
-			//alert(House.activeBlock+"|"+House.placeTarget);
-			
 			$("#cursorHelper").removeClass();
 			
 			if(!House.placeTarget) {
@@ -122,22 +117,7 @@ House = {
 				return false;
 			}
 			if(!House.activeBlock) return false;
-			/*
-			switch(House.placeTarget){
-				case "placeHolder1":
-					$("#"+House.placeTarget).css('background','#f00');
-					break;
-				case "placeHolder2":
-					$("#"+House.placeTarget).css('background','#ff0');
-					break;
-				case "placeHolder3":
-					$("#"+House.placeTarget).css('background','#00f');
-					break;
-				case "placeHolder4":
-					$("#"+House.placeTarget).css('background','#0f0');
-					break;
-				default:
-			}*/
+
 			var affected = House.affectedBlocks( House.targetCoordinates[0], House.targetCoordinates[1], House.blockDimensions[0], House.blockDimensions[1] );
 			//console.log( [House.targetCoordinates[0], House.targetCoordinates[1], House.blockDimensions[0], House.blockDimensions[1]].join(","))
 			var affectedTargets = [];
