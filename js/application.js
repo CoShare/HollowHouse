@@ -6,7 +6,40 @@ House = {
 	targetCoordinates:[0,0],
 	targetImageBlocks:[ ["n","n"], ["n","n"] ], // n, s, v, h
 	targetImage:"",
-
+	images:{
+		"nnnn":{active:true},
+		"nnns":{active:true},
+		"nnsn":{active:true},
+		"nsnn":{active:true},
+		"snnn":{active:true},
+		"snns":{active:true},
+		"snsn":{active:true},
+		"ssnn":{active:true},
+		"ssns":{active:true},
+		"sssn":{active:true},
+		"ssss":{active:true},
+		"nsns":{active:true},
+		"nssn":{active:true},
+		"nsss":{active:true},
+		"nnss":{active:true},
+		"vsvs":{active:true},
+		"vsvn":{active:true},
+		"vvvv":{active:true},
+		"nvnv":{active:true},
+		"hhnn":{active:true},
+		"hhhh":{active:true},
+		"nnhh":{active:true},
+		"vnvs":{active:true},
+		"svnv":{active:false},
+		"svsv":{active:false},
+		"nvsv":{active:false},
+		"hhss":{active:false},
+		"hhsn":{active:false},
+		"hhns":{active:false},
+		"sshh":{active:false},
+		"snhh":{active:false},
+		"nshh":{active:false},
+	},
 	setupActions: function(){
 		// Track the block we might potentially request
 		$("#Toolbar .block").hover(function(){
@@ -23,12 +56,17 @@ House = {
 			House.placeTarget = "";
 		});
 
+		$(window).mousemove(function(e){
+			$("#cursorHelper").css("top",e.pageY+5);
+			$("#cursorHelper").css("left",e.pageX+5);
+		});
+
 		$("#Container").mousedown(function(e){
 
 
 			if(!House.blockTarget) return false;
 			if( House.isCombined() ) House.resetProcess();
-
+			
 			House.activeBlock = House.blockTarget;
 			/*
 			var Holder = $("<div id='PlaceMe'>");
@@ -50,15 +88,19 @@ House = {
 			/* Visual
 			$("body").append(Holder);
 			*/
+			$("#cursorHelper").css("display","block");
 			switch(House.activeBlock){
 				case "blockSingle":
 					House.blockDimensions = [1,1];
+					$("#cursorHelper").addClass("holderSingleMouse");
 					break;
 				case "blockTall":
 					House.blockDimensions = [1,2];
+					$("#cursorHelper").addClass("holderTallMouse");
 					break;
 				case "blockWide":
 					House.blockDimensions = [2,1];
+					$("#cursorHelper").addClass("holderWideMouse");
 					break;
 				case "blockDelete":
 					break;
@@ -71,6 +113,7 @@ House = {
 			*/
 			//alert(House.activeBlock+"|"+House.placeTarget);
 			
+			$("#cursorHelper").removeClass();
 			
 			if(!House.placeTarget) {
 				House.activeBlock = "";
@@ -262,7 +305,7 @@ House = {
 		House.resetPlaceholders();
 	},
 	squareOffConflicts: function(){
-
+		//Todo
 	},
 	setCookie: function(c_name,value,exdays){
 		exdays = 365;

@@ -8,6 +8,7 @@ body{background:#07110a;font-family: 'Finger Paint', cursive;}
 #Frame{border:3px solid #fefcf1;background:url("../img/bg.png") top center no-repeat}
 
 #Present{width:500px;height:500px;position:absolute;background:#fff;display:none;}
+#NotPresent{width:500px;height:260px;color:#fff;position:absolute;background:#000;display:none;padding:240px 0 0 0;}
 
 #Toolbar{width:300px;padding:5px;margin:150px 0 0 0;position: relative;}
 #Toolbar .block{float:left;padding:3px;background:#707070;margin-right:5px;cursor:move;}
@@ -19,6 +20,16 @@ body{background:#07110a;font-family: 'Finger Paint', cursive;}
 #placeHolder3{border-width: 0 5px 0 0;width:245px;height:250px;}
 #placeHolder4{border-width: 0;width:250px;height:250px;}
 
+#cursorHelper{position:absolute;display:none;}
+
+.holderWide{width:500px;height:248px;background:#0f0;}
+.holderTall{width:248px;height:500px;background:#00f;}
+.holderSingle{width:248px;height:248px;background:#f00;}
+
+.holderWideMouse{width:50px;height:25px;background:#ccc;}
+.holderTallMouse{width:25px;height:50px;background:#ccc;}
+.holderSingleMouse{width:25px;height:25px;background:#ccc;}
+
 .boxSample{background:#f00;cursor:move;-webkit-touch-callout: none;border-radius:10px;margin:5px;font-size:20px;text-transform:uppercase;}
 .boxTall{height:150px;width:75px;}
 .boxWide{height:67px;width:150px;}
@@ -29,4 +40,28 @@ body{background:#07110a;font-family: 'Finger Paint', cursive;}
 
 .c{clear:both;}
 
-​
+​.transparent {
+	/* Required for IE 5, 6, 7 */
+	/* ...or something to trigger hasLayout, like zoom: 1; */
+	width: 100%; 
+		
+	/* Theoretically for IE 8 & 9 (more valid) */	
+	/* ...but not required as filter works too */
+	/* should come BEFORE filter */
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	
+	/* This works in IE 8 & 9 too */
+	/* ... but also 5, 6, 7 */
+	filter: alpha(opacity=50);
+	
+	/* Older than Firefox 0.9 */
+	-moz-opacity:0.5;
+	
+	/* Safari 1.x (pre WebKit!) */
+	-khtml-opacity: 0.5;
+    
+	/* Modern!
+	/* Firefox 0.9+, Safari 2?, Chrome any?
+	/* Opera 9+, IE 9+ */
+	opacity: 0.5;
+}
