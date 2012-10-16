@@ -10,7 +10,7 @@ body{background:#07110a;font-family: 'Finger Paint', cursive;}
 #Present{width:500px;height:500px;position:absolute;background:#fff;display:none;}
 #NotPresent{width:500px;height:260px;color:#fff;position:absolute;background:#000;display:none;padding:240px 0 0 0;}
 
-#Toolbar{width:300px;padding:5px;margin:150px 0 0 0;position: relative;}
+#Toolbar{width:300px;padding:5px;margin:115px 0 0 0;position: relative;}
 #Toolbar .block{float:left;padding:3px;background:#707070;margin-right:5px;cursor:move;}
 
 .noselect{-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
@@ -65,3 +65,5 @@ body{background:#07110a;font-family: 'Finger Paint', cursive;}
 	/* Opera 9+, IE 9+ */
 	opacity: 0.5;
 }
+#instructions{font-size:13px;color:#fff;text-align:left;padding:0 0 10px 20px;}
+#credits{clear:both;font-size:11px;color:#ccc;text-align:left;padding:253px 0 0 40px;}
