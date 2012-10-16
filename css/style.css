@@ -65,3 +65,5 @@ body{background:#07110a;font-family: 'Finger Paint', cursive;}
 	/* Opera 9+, IE 9+ */
 	opacity: 0.5;
 }
+#instructions{font-size:13px;color:#fff;text-align:left;padding:0 0 10px 20px;}
+#credits{clear:both;font-size:11px;color:#ccc;text-align:left;padding:253px 0 0 40px;}
