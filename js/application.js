@@ -31,6 +31,7 @@ House = {
 		"hhhh":{active:true},
 		"nnhh":{active:true},
 		"vnvs":{active:true},
+		"vnvn":{active:true},
 		"svnv":{active:false},
 		"svsv":{active:false},
 		"nvsv":{active:false},
