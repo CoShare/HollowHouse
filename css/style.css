@@ -1,6 +1,6 @@
 body{background:#07110a;font-family: 'Finger Paint', cursive;}
 #Wrapper{}
-#Container{width:1000px;}
+#Container{width:820px;}
 #Workshop{padding:10px;float:left;}
 #House{width:536px;height:500px;padding:0 0 0 10px;clear:both;}
 #Roof{height:121px;background:url("../img/roof.png") top no-repeat;}
