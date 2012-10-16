@@ -258,9 +258,9 @@ House = {
 	}, 
 	setPlaceholder: function(placeholder,type){
 		var target = House.lookupPlaceholder(placeholder);
-		if (type == "s") $("#"+placeholder).css('background','#f00');
-		if (type == "v") $("#"+placeholder).css('background','#00f');
-		if (type == "h") $("#"+placeholder).css('background','#0f0');
+		if (type == "s") $("#"+placeholder).css('background','url("img/sblock.png") top no-repeat');
+		if (type == "v") $("#"+placeholder).css('background','url("img/vblock.png") top no-repeat');
+		if (type == "h") $("#"+placeholder).css('background','url("img/hblock.png") top no-repeat');
 
 		House.targetImageBlocks[target[0]-1 ][target[1]-1 ] = type;
 	},
