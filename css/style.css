@@ -1,0 +1,32 @@
+body{background:#07110a;font-family: 'Finger Paint', cursive;}
+#Wrapper{}
+#Container{width:1000px;}
+#Workshop{padding:10px;float:left;}
+#House{width:536px;height:500px;padding:0 0 0 10px;clear:both;}
+#Roof{height:121px;background:url("../img/roof.png") top no-repeat;}
+#Siding{border:2px solid #fefcf1;padding:13px;}
+#Frame{border:3px solid #fefcf1;background:url("../img/bg.png") top center no-repeat}
+
+#Present{width:500px;height:500px;position:absolute;background:#fff;display:none;}
+
+#Toolbar{width:300px;padding:5px;margin:150px 0 0 0;position: relative;}
+#Toolbar .block{float:left;padding:3px;background:#707070;margin-right:5px;cursor:move;}
+
+.noselect{-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
+.box{display:table-cell;float:left;border:#fefcf1 solid;}
+#placeHolder1{border-width: 0 5px 5px 0;width:245px;height:245px;}
+#placeHolder2{border-width: 0 0 5px 0;width:250px;height:245px;}
+#placeHolder3{border-width: 0 5px 0 0;width:245px;height:250px;}
+#placeHolder4{border-width: 0;width:250px;height:250px;}
+
+.boxSample{background:#f00;cursor:move;-webkit-touch-callout: none;border-radius:10px;margin:5px;font-size:20px;text-transform:uppercase;}
+.boxTall{height:150px;width:75px;}
+.boxWide{height:67px;width:150px;}
+.boxSingle{height:67px;width:75px;}
+.boxLarge{height:150px;width:150px;}
+.boxGo{background:#fff !important;cursor: pointer !important;cursor: hand !important;padding-top:55px !important;height:95px;}
+.boxGo:hover{background:#1cad09 !important;}
+
+.c{clear:both;}
+
+​
