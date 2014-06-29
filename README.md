@@ -2,7 +2,7 @@ HollowHouse
 ===========
 An awesome collaborative creative project. 
 
-Check it out at: http://workman.github.io/HollowHouse
+Check it out at: http://coshare.github.io/HollowHouse
 
 License
 -------
